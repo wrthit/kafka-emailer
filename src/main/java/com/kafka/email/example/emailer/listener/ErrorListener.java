@@ -16,7 +16,7 @@ public class ErrorListener {
         this.emailService = emailService;
     }
 
-    @KafkaListener(topics = "logging", groupId = "emailService", containerFactory = "kafkaListenerContainerFactory")
+    @KafkaListener(topics = "${topic}", groupId = "${groupId}", containerFactory = "kafkaListenerContainerFactory")
     public void emailError (@Payload Notification notification){
         emailService.sendEmail(notification);
     }

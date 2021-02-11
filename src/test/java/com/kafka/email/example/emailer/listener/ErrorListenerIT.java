@@ -22,6 +22,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
@@ -51,7 +52,9 @@ public class ErrorListenerIT {
     private EmailService emailServiceMock;
 
     Producer<String, Notification> producer;
-    private static final String TOPIC = "logging";
+
+    @Value("${topic}")
+    private String TOPIC;
 
     @BeforeAll
     public void setup(){
